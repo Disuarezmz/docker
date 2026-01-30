@@ -1,0 +1,23 @@
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:nightly
+    container_name: gitlab
+    restart: always
+    hostname: 'repo.disuarez.ovh'
+
+    mem_limit: 3g
+    cpus: 0.5
+
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        # Add any other gitlab.rb configuration here, each on its own line
+        external_url 'http://192.168.1.110' #Cambia la IP por tu host
+    ports:
+      - '8081:80'
+      - '8443:443'
+      - '2222:22'
+    volumes:
+      - '$GITLAB_HOME/config:/etc/gitlab'
+      - '$GITLAB_HOME/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/data:/var/opt/gitlab'
+    shm_size: '256m'

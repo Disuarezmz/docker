@@ -1,0 +1,3 @@
+# Generar la password para primer inicio de sesion
+
+docker exec -it gitlab cat /etc/gitlab/initial_root_password
