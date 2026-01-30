@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   nginx:
-    image: nginx:latest
+    image: nginx:1.28.1 # Change version
     container_name: nginx_php
     ports:
       - "8080:80"
@@ -13,7 +13,8 @@ services:
       - php
 
   php:
-    image: php:8.2-fpm
+    image: php:8.4.17-fpm # Change version
     container_name: php_fpm
     volumes:
+
       - ./:/var/www/html
